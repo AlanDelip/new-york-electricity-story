@@ -1,0 +1,21 @@
+{
+  "name": "new-york-electricity-story",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./ -d build/new-york-electricity-story"
+  },
+  "author": "Alan. Zhufeng Xu",
+  "license": "MIT",
+  "devDependencies": {
+    "less": "^3.9.0"
+  },
+  "dependencies": {
+    "d3": "^5.7.0",
+    "ismobilejs": "^0.5.1",
+    "lodash": "^4.17.11",
+    "scrollmagic": "^2.0.6",
+    "gsap": "^2.0.2"
+  }
+}
