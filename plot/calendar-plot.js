@@ -10,12 +10,11 @@ export default class CalendarPlot {
 		this.size = {width: containerDOM.offsetWidth, height: containerDOM.offsetHeight};
 
 		// scale
-		this.x = d3.scaleLinear().domain([0, 37]).range([this.margin.left, this.size.width - this.margin.right]);
-		this.y = d3.scaleLinear().domain([0, 16]).range([this.margin.top, this.size.height - this.margin.bottom]);
-		this.r = d3.scaleLinear().domain([300000, 600000]).range([1, 15]);
-
+		const minLoad = 300000, maxLoad = 600000, minRadius = 1, maxRadius = 15, columns = 37, rows = 16;
+		this.x = d3.scaleLinear().domain([0, columns]).range([this.margin.left, this.size.width - this.margin.right]);
+		this.y = d3.scaleLinear().domain([0, rows]).range([this.margin.top, this.size.height - this.margin.bottom]);
+		this.r = d3.scaleLinear().domain([minLoad, maxLoad]).range([minRadius, maxRadius]);
 	}
-
 
 	/**
 	 * init with configurations
@@ -28,7 +27,7 @@ export default class CalendarPlot {
 	}
 
 	data(data) {
-		this.data = data;
+		this.data = data.filter(d => d.load !== null);
 		return this;
 	}
 
@@ -110,14 +109,14 @@ export default class CalendarPlot {
 		let exitModel = this.calendar.exit();
 
 		if (animated) {
-			enteredModel.transition()
-				.delay((d, i) => Math.random() * i * 5)
-				.attr("r", d => this.r(d.load));
-
 			exitModel.transition()
 				.delay((d, i) => Math.random() * i / 2)
 				.attr("r", 0)
 				.remove();
+
+			enteredModel.transition()
+				.delay((d, i) => Math.random() * i * 5)
+				.attr("r", d => this.r(d.load));
 		} else {
 			enteredModel.attr("r", d => this.r(d.load));
 			exitModel.remove();

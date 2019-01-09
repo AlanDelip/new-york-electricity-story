@@ -1,0 +1,207 @@
+<div class="title">How factors affect the electricity use?</div>
+<div class="subtitle">Typical Days Exploration</div>
+<div class="split"></div>
+<div class="one-day-intro">
+    <div>
+        Previously, we've already explored some effects based on a daily view.
+    </div>
+    <div>
+        What about narrowing down to a hourly view?
+    </div>
+    <div>
+        Do the factors influence daily electricity pattern?
+    </div>
+    <div>
+        After encoding and analyzing the hourly data, two common effects are found below.
+    </div>
+</div>
+<div class="scene-container">
+    <div id="typical-day-exploration-trigger-4"></div>
+    <div id="typical-day-exploration-trigger-5"></div>
+    <div id="typical-day-temp-chart"></div>
+    <div id="typical-scene" class="desc-container">
+        <div class="description">
+            <div class="d-title"><i>Temperature Effect</i></div>
+            <div class="mix-days">
+                <div class="mix-day">
+                    <div class="dot high-temp"></div>
+                    <div>July 2, 2018</div>
+                </div>
+                <div class="mix-day">
+                    <div class="dot high-temp"></div>
+                    <div>August 6, 2018</div>
+                </div>
+                <div class="mix-day">
+                    <div class="dot low-temp"></div>
+                    <div>Jan 1, 2018</div>
+                </div>
+                <div class="mix-day">
+                    <div class="dot low-temp"></div>
+                    <div>Jan 8, 2018</div>
+                </div>
+            </div>
+            <div>
+                Generally, from the previous part, we notice that the electricity usage tends to go higher
+                when either the temperature goes higher or lower.
+            </div>
+            <div>
+                What's more, it's not hard to find out here that hot or cold days share different patterns in
+                hourly distribution.
+            </div>
+            <div>
+                For <b>summer time, the peak hour appears around 3p.m.</b> which is the hottest
+                working hour.
+            </div>
+            <div>
+                For <b>winter time, the peak hours appear around 12p.m. and 6p.m.</b> which are near
+                the lunch and the dinner time.
+            </div>
+            <small>
+                *Note that most space heaters in apartments are using natural gas
+                and fuel oil which are not counted here.
+            </small>
+        </div>
+        <div class="space"></div>
+        <div id="typical-day-exploration-trigger-6"></div>
+        <div class="description">
+            <div>
+                <div class="d-title"><i>Weekends Effect</i></div>
+                <div class="mix-days">
+                    <div class="mix-day">
+                        <div class="dot normal"></div>
+                        <div>Sep 20, 2018</div>
+                        <div>Thursday</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot normal"></div>
+                        <div>Sep 21, 2018</div>
+                        <div>Friday</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot weekend"></div>
+                        <div>Sep 22, 2018</div>
+                        <div>Saturday</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot weekend"></div>
+                        <div>Sep 23, 2018</div>
+                        <div>Sunday</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                On weekends, both the load and pattern are different. With total consumption goes down,
+                peak hours don't show up within the range working hours as well.
+                Instead, <b>peak hours are moving towards the lunch time and the dinner time</b> and the working
+                hours tend to form a flat in between.
+            </div>
+        </div>
+        <div class="l-space"></div>
+        <div class="description">
+            <div class="d-title">Historical Events</div>
+            <div>
+                Finally, there're also some interesting historical events to be explored.
+            </div>
+            <div>
+                We extract data of the date when the certain event happened (highlighted), along with the data
+                from
+                previous day, following day and corresponding days in 2018.
+            </div>
+        </div>
+        <div class="l-space"></div>
+        <div id="typical-day-exploration-trigger-7"></div>
+        <div class="description">
+            <div class="images">
+                <img src="https://www.flaticon.com/premium-icon/icons/svg/805/805442.svg"/>
+            </div>
+            <div class="d-title">the 58th Presidential Inauguration</div>
+            <span>(Human Factor)</span>
+            <div>
+                <div class="mix-days">
+                    <div class="mix-day">
+                        <div class="dot event"></div>
+                        <div>Jan 19-21, 2017</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot normal"></div>
+                        <div>Jan 19-21, 2018</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                Trump officially took office on this day.
+            </div>
+            <div>
+                It looks like the electricity load exceeds that of 2018. But, don't forget to look at the
+                day of week. While Jan 20 in 2017 is Friday, the Jan 20 in 2018 is Saturday. A more probable
+                explanation here would be a <b>Weekends Effect</b>.
+            </div>
+        </div>
+        <div class="space"></div>
+        <div id="typical-day-exploration-trigger-8"></div>
+        <div class="description">
+            <div class="images">
+                <img src="https://image.freepik.com/free-vector/skinny-business-man-with-fat-debt-burden-paunch_3446-517.jpg"/>
+            </div>
+            <div class="d-title">the 2008 Global Financial Crisis</div>
+            <span>(Human Factor)</span>
+            <div>
+                <div class="mix-days">
+                    <div class="mix-day">
+                        <div class="dot event"></div>
+                        <div>Sep 14-16, 2008</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot normal"></div>
+                        <div>Sep 14-16, 2018</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                The case with the financial services firm <i>Lehman Brothers</i> on September 15, 2008, remains
+                the largest bankruptcy filing in U.S. history, with Lehman holding over US$600,000,000,000 in
+                assets.
+            </div>
+            <div>
+                While the electricity load seems to be higher than the nearby dates, we can't draw a clear
+                conclusion here because lots of factors like weather, temperature and more factors from the
+                financial perspective should be considered in this case.
+            </div>
+        </div>
+        <div class="space"></div>
+        <div id="typical-day-exploration-trigger-9"></div>
+        <div class="description">
+            <div class="images">
+                <img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSItMTggMCA1MTIgNTEyLjAwMTY1IiB3aWR0aD0iNTEycHgiPjxnIGZpbGw9IiMwMGFhZGYiPjxwYXRoIGQ9Im05Ny42Mjg5MDYgNTAxLjA0Njg3NSAyNi45NzI2NTYtNjkgMjguMDE5NTMyIDEwLjk1NzAzMS0yNi45NzI2NTYgNjguOTk2MDk0em0wIDAiLz48cGF0aCBkPSJtMjM0LjMxNjQwNiA1MDEuMDQyOTY5IDI2Ljk3MjY1Ni02OSAyOC4wMjM0MzggMTAuOTUzMTI1LTI2Ljk3MjY1NiA2OXptMCAwIi8+PHBhdGggZD0ibTMwMi42MDkzNzUgNTAxLjAzOTA2MiAyNi45NzY1NjMtNjkgMjguMDE5NTMxIDEwLjk1NzAzMi0yNi45NzI2NTcgNjl6bTAgMCIvPjxwYXRoIGQ9Im0xMDguOTU3MDMxIDMzOS0yMi4zMTI1IDU1Ljg4NjcxOSAyOC4wMjM0MzggMTAuOTUzMTI1IDI2LjU4OTg0My02Ni44Mzk4NDR6bTAgMCIvPjxwYXRoIGQ9Im0zMDkuOTcyNjU2IDM0NS4yNjU2MjUtMTkuMzQ3NjU2IDQ5LjYyMTA5NCAyOC4wMTk1MzEgMTAuOTUzMTI1IDIzLjYzMjgxMy02MC41NzQyMTl6bTAgMCIvPjwvZz48cGF0aCBkPSJtMjM0LjMxNjQwNiA1MDEuMDQyOTY5IDI2Ljk3MjY1Ni02OSAyOC4wMjM0MzggMTAuOTUzMTI1LTI2Ljk3MjY1NiA2OXptMCAwIiBmaWxsPSIjMDA3ZmM1Ii8+PHBhdGggZD0ibTMwMi42MDkzNzUgNTAxLjAzOTA2MiAyNi45NzY1NjMtNjkgMjguMDE5NTMxIDEwLjk1NzAzMi0yNi45NzI2NTcgNjl6bTAgMCIgZmlsbD0iIzAwN2ZjNSIvPjxwYXRoIGQ9Im0zMDkuOTcyNjU2IDM0NS4yNjU2MjUtMTkuMzQ3NjU2IDQ5LjYyMTA5NCAyOC4wMTk1MzEgMTAuOTUzMTI1IDIzLjYzMjgxMy02MC41NzQyMTl6bTAgMCIgZmlsbD0iIzAwN2ZjNSIvPjxwYXRoIGQ9Im0zODcuNjY3OTY5IDM0OC41MTE3MTloLTI4Mi43NDIxODhjLTU3Ljg1NTQ2OSAwLTEwNC45MjU3ODEtNDcuMDcwMzEzLTEwNC45MjU3ODEtMTA0LjkyNTc4MXYtOC4wNDY4NzZjMC01My4xMzI4MTIgMzkuNzAzMTI1LTk3LjE3MTg3NCA5MS0xMDQuMDAzOTA2di0zMS41NjI1YzAtNTUuMTI1IDQ0Ljg0NzY1Ni05OS45NzI2NTYgOTkuOTcyNjU2LTk5Ljk3MjY1NmgxLjcxNDg0NGM1MC40NzY1NjIgMCA5Mi4zMzU5MzggMzcuNjAxNTYyIDk5LjAzOTA2MiA4Ni4yNjU2MjUgNDcuNTY2NDA3IDMuMTY0MDYzIDg2LjA3ODEyNiAzOS45NTcwMzEgOTEuOTIxODc2IDg2Ljc1MzkwNmg0LjAxOTUzMWM0OC4zODI4MTIgMCA4Ny43NDYwOTMgMzkuMzYzMjgxIDg3Ljc0NjA5MyA4Ny43NDYwOTRzLTM5LjM2MzI4MSA4Ny43NDYwOTQtODcuNzQ2MDkzIDg3Ljc0NjA5NHptMCAwIiBmaWxsPSIjYjZjNGNmIi8+PHBhdGggZD0ibTM4Ny42Njc5NjkgMTczLjAxOTUzMWgtNC4wMTk1MzFjLTUuODQzNzUtNDYuNzk2ODc1LTQ0LjM1NTQ2OS04My41ODk4NDMtOTEuOTIxODc2LTg2Ljc1MzkwNi00Ljk0OTIxOC0zNS45MDYyNS0yOS4wNDI5NjgtNjUuNzczNDM3LTYxLjYwOTM3NC03OC45NzI2NTZ2MzQxLjIxODc1aDE1Ny41NTA3ODFjNDguMzgyODEyIDAgODcuNzQ2MDkzLTM5LjM2MzI4MSA4Ny43NDYwOTMtODcuNzQ2MDk0cy0zOS4zNjMyODEtODcuNzQ2MDk0LTg3Ljc0NjA5My04Ny43NDYwOTR6bTAgMCIgZmlsbD0iIzk2YTNhYiIvPjxwYXRoIGQ9Im0yODMuMzgyODEyIDE0OC43NDYwOTQtMTguNTE5NTMxIDE0MC44MjAzMTJoNTEuNWwtMTI0LjMyODEyNSAyMjIuNDMzNTk0IDE4LjUxNTYyNS0xMzAuNTg1OTM4aC01MS40OTYwOTN6bTAgMCIgZmlsbD0iI2ZmZGEyZCIvPjxwYXRoIGQ9Im0yMzAuMTE3MTg4IDI0OC40Mjk2ODguOTQ5MjE4IDE5My43NDIxODcgODUuMjk2ODc1LTE1Mi42MDU0NjloLTUxLjVsMTguNTE5NTMxLTE0MC44MjAzMTJ6bTAgMCIgZmlsbD0iI2ZkYmYwMCIvPjwvc3ZnPgo="/>
+            </div>
+            <div class="d-title">Big Storm in 2017</div>
+            <span>(Natural Factor)</span>
+            <div>
+                <div class="mix-days">
+                    <div class="mix-day">
+                        <div class="dot event"></div>
+                        <div>Mar 13-15, 2017</div>
+                    </div>
+                    <div class="mix-day">
+                        <div class="dot normal"></div>
+                        <div>Mar 13-15, 2018</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                A <i>Nor'easter</i> moved up the eastern US coast on March 13th to late on the 14th. Heavy snow
+                spread across parts of central New York and Pennsylvania late on March 13th. By late evening on
+                the
+                14th snowfall amounts range from 8 to 33 inches of snow.
+            </div>
+            <div>
+                On March 15, the average temperature went down to 22°F (comparing to 28°F on March 13 and 14).
+            </div>
+            <div>
+                In this case, the <b>Temperature Effect</b> works, and together with the snowfall, the
+                electricity
+                load went up.
+            </div>
+        </div>
+    </div>
+</div>

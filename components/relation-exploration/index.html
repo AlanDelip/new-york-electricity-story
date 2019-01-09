@@ -1,0 +1,130 @@
+<div class="title">What is affecting the electricity use?</div>
+<div class="subtitle">Relation Exploration</div>
+<div class="split"></div>
+<div class="relation-intro">
+    <div>
+        Now that we've noticed some visual patterns from the calendar view, whether the electricity load will
+        actually be influenced by them is to be validated in a more logical way.
+    </div>
+    <div>
+        Starting from the 6 categorized types will be a great approach.
+    </div>
+    <div>
+        Here let's try to transform dots in the calendar view into an axis system using x-position to indicate
+        categories and y-position to indicate the consumption.
+    </div>
+</div>
+<div class="labels">
+    <div class="label">
+        <div class="dot high-temp"></div>
+        <span>High Temperature</span>
+    </div>
+    <div class="label">
+        <div class="dot low-temp"></div>
+        <span>Low Temperature</span>
+    </div>
+    <div class="label">
+        <div class="dot holiday"></div>
+        <span>Holidays</span>
+    </div>
+    <div class="label">
+        <div class="dot event"></div>
+        <span>Events</span>
+    </div>
+    <div class="label">
+        <div class="dot weekend"></div>
+        <span>Weekends</span>
+    </div>
+    <div class="label">
+        <div class="dot normal"></div>
+        <span>Normal days</span>
+    </div>
+</div>
+<div class="relation-container">
+    <div id="special-load"></div>
+    <div class="description">
+        <div>Natural factors win from the first glance.</div>
+        <div>
+            We notice that both <b>High Temperature</b> and
+            <b>Low Temperature</b> will stimulate the electricity load.
+            Meanwhile, a high-temperature situation stands out more significantly.
+        </div>
+        <div>
+            While there're no obvious visual pattern in human factors,
+            it seems that <b>weekends</b> keep a denser data distribution under the average line.
+        </div>
+    </div>
+</div>
+<div id="relation-exploration-trigger-1"></div>
+<div class="scene-container">
+    <div id="relation-exploration-trigger-2"></div>
+    <div id="temp-load-container">
+        <div id="temp-load"></div>
+        <div class="labels">
+            <div id="high-temp-label" class="label">
+                <div class="dot high-temp"></div>
+                <div class="text">High Temperature</div>
+            </div>
+            <div id="low-temp-label" class="label">
+                <div class="dot low-temp"></div>
+                <div>Low Temperature</div>
+            </div>
+            <div id="holiday-label" class="label">
+                <div class="dot holiday"></div>
+                <div>Holidays</div>
+            </div>
+            <div id="event-label" class="label">
+                <div class="dot event"></div>
+                <div>Events</div>
+            </div>
+            <div id="weekend-label" class="label">
+                <div class="dot weekend"></div>
+                <div>Weekends</div>
+            </div>
+            <div id="normal-day-label" class="label">
+                <div class="dot normal"></div>
+                <div>Normal days</div>
+            </div>
+        </div>
+    </div>
+    <div class="desc-container" id="relation-exploration-desc">
+        <div class="description">
+            <div>
+                Since the temperature has the biggest visual effect on the electricity load, we're now trying to
+                use temperature as the x-axis to separate the factor and see more details.
+            </div>
+            <div>
+                Hover on one of the labels, we can see corresponding data in a highlighted form.
+            </div>
+        </div>
+        <div class="space"></div>
+        <div class="description">
+            Focusing on <b>temperature</b> only, we can find out that both high temperature and low temperature
+            have a positive relation with the electricity load. What's more, a high-temperature situation
+            stands out more significantly.
+        </div>
+        <div class="space"></div>
+        <div class="description">
+            <div>
+                Focusing on <b>weekends</b> and <b>normal days</b> (weekdays without other conditions),
+                it's clearly illustrated that weekends mostly distribute below the normal days' boundary despite
+                the
+                temperature factor.
+            </div>
+            <div>
+                The short rest for people and their companies contributes to the reduction on electricity usage.
+            </div>
+        </div>
+        <div class="space"></div>
+        <div class="description">
+            <div>
+                While answering the 'What' question, part of the answer to 'How' is also revealed.
+            </div>
+            <div>
+                Both natural(temperature) and human(weekends) factors contribute to the abnormality in
+                electricity consumption. For the temperature factor, the electricity usage tends to go higher
+                when it gets closer to either end of its extremes(cold or hot).
+            </div>
+        </div>
+    </div>
+</div>
