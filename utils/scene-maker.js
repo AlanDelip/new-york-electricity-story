@@ -2,7 +2,8 @@ import ScrollMagic from "scrollmagic";
 
 const d3 = require("d3");
 
-export let createCalendarHLScene = (scrollCtrl, calendar, selection, highlightedData, {triggerElement, duration, textElement}) => {
+export let createCalendarHLScene = (scrollCtrl, calendar, highlightedData, {triggerElement, duration, textElement}) => {
+	let selection = calendar.getCalendar();
 	let zoom = d3.zoom()
 		.extent([[0, 0], [0, 0]])	// set view port to the left top corner
 		.on(".zoom", null)
@@ -13,12 +14,20 @@ export let createCalendarHLScene = (scrollCtrl, calendar, selection, highlighted
 	let y = calendar.getYScale();
 	let highlightBlock = [
 		{
-			x: highlightedData.map(d => x(6 * ((d.month - 1) % 6) + d.week)).reduce((a, b) => a < b ? a : b),
-			y: highlightedData.map(d => y(Math.floor(((d.month - 1) / 6)) * 8 + d.day_of_week)).reduce((a, b) => a < b ? a : b)
+			x: highlightedData
+				.map(d => x(6 * ((d.month - 1) % 6) + d.week))
+				.reduce((a, b) => a < b ? a : b),
+			y: highlightedData
+				.map(d => y(Math.floor(((d.month - 1) / 6)) * 8 + d.day_of_week))
+				.reduce((a, b) => a < b ? a : b)
 		},
 		{
-			x: highlightedData.map(d => x(6 * ((d.month - 1) % 6) + d.week)).reduce((a, b) => a > b ? a : b),
-			y: highlightedData.map(d => y(Math.floor(((d.month - 1) / 6)) * 8 + d.day_of_week)).reduce((a, b) => a > b ? a : b)
+			x: highlightedData
+				.map(d => x(6 * ((d.month - 1) % 6) + d.week))
+				.reduce((a, b) => a > b ? a : b),
+			y: highlightedData
+				.map(d => y(Math.floor(((d.month - 1) / 6)) * 8 + d.day_of_week))
+				.reduce((a, b) => a > b ? a : b)
 		}
 	];
 	let highlightCenter = {
@@ -58,7 +67,9 @@ export let createCalendarHLScene = (scrollCtrl, calendar, selection, highlighted
 
 	let transitPlots = mappedProgress => {
 		selection
-			.call(zoom.translateTo, -mappedProgress * (viewportOfPreview.x / 2 - highlightCenter.x), -mappedProgress * (viewportOfPreview.y / 2 - highlightCenter.y))
+			.call(zoom.translateTo,
+				-mappedProgress * (viewportOfPreview.x / 2 - highlightCenter.x),
+				-mappedProgress * (viewportOfPreview.y / 2 - highlightCenter.y))
 			.call(zoom.scaleTo, 1 + mappedProgress);
 	};
 
@@ -100,7 +111,7 @@ export let createScatterHLScene = (scrollCtrl, scatterPlot, pinnedEle, {triggerE
 		});
 };
 
-export let createFixedScene = (scrollCtrl, pinnedEle, {triggerElement, duration}, {startCB, progressCB, endCB} = {}) => {
+export let createFixedScene = (scrollCtrl, pinnedEle, triggerElement, {duration=0,startCB, progressCB, endCB} = {}) => {
 	return new ScrollMagic.Scene({triggerElement, duration})
 		.setPin(pinnedEle)
 		.addTo(scrollCtrl)
@@ -109,7 +120,7 @@ export let createFixedScene = (scrollCtrl, pinnedEle, {triggerElement, duration}
 		.on("end", e => endCB ? endCB() : null);
 };
 
-export let createTriggerScene = (scrollCtrl, {triggerElement, duration = 0}, {startCB, progressCB, endCB}) => {
+export let createTriggerScene = (scrollCtrl, triggerElement, {duration = 0, startCB, progressCB, endCB}) => {
 	return new ScrollMagic.Scene({triggerElement, duration})
 		.addTo(scrollCtrl)
 		.on("start", e => startCB ? startCB(e) : null)

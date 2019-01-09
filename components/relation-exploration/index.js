@@ -11,19 +11,18 @@ export default function load(data, scrollCtrl) {
 	let cScatterPlot = CategoricalScatterPlot.of("#special-load", data).draw();
 	let qScatterPlot = QuantitativeScatter.of("#temp-load", data);
 
-	createTriggerScene(scrollCtrl, {
-		triggerElement: "#relation-exploration-trigger-1"
-	}, {
-		startCB: e => {
-			if (e.scrollDirection === "FORWARD") {
-				qScatterPlot.draw();
-				cScatterPlot.hide();
-			} else {
-				cScatterPlot.reset();
-				qScatterPlot.hide();
+	createTriggerScene(scrollCtrl, "#relation-exploration-trigger-1",
+		{
+			startCB: e => {
+				if (e.scrollDirection === "FORWARD") {
+					qScatterPlot.draw();
+					cScatterPlot.hide();
+				} else {
+					cScatterPlot.reset();
+					qScatterPlot.hide();
+				}
 			}
-		}
-	});
+		});
 
 	let addHighlightEvent = (qScatterPlot, ...eles) => {
 		for (let ele of eles) {

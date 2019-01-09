@@ -1,32 +1,57 @@
 const d3 = require('d3');
+const DEFAULT_CONFIG = {
+	margin: {left: 10, right: 10, top: 10, bottom: 10},
+	minLoad: 300000,
+	maxLoad: 600000,
+	minRadius: 1,
+	maxRadius: 15,
+	columns: 37,
+	rows: 16
+};
 
 export default class CalendarPlot {
-	constructor({container, margin}) {
+	/**
+	 * @param container container of the calendar
+	 * @param config {DEFAULT_CONFIG} see DEFAULT_CONFIG
+	 */
+	constructor(container, config) {
+		// merge config with default
+		config = Object.assign({}, DEFAULT_CONFIG, config);
+
 		this.container = container;
-		this.margin = margin;
+		this.margin = config.margin;
 		this.svg = null;
 
+		// calculate size of the plot
 		let containerDOM = document.getElementById(this.container.substr(1));
 		this.size = {width: containerDOM.offsetWidth, height: containerDOM.offsetHeight};
 
 		// scale
-		const minLoad = 300000, maxLoad = 600000, minRadius = 1, maxRadius = 15, columns = 37, rows = 16;
-		this.x = d3.scaleLinear().domain([0, columns]).range([this.margin.left, this.size.width - this.margin.right]);
-		this.y = d3.scaleLinear().domain([0, rows]).range([this.margin.top, this.size.height - this.margin.bottom]);
-		this.r = d3.scaleLinear().domain([minLoad, maxLoad]).range([minRadius, maxRadius]);
+		this.x = d3.scaleLinear()
+			.domain([0, config.columns])
+			.range([this.margin.left, this.size.width - this.margin.right]);
+
+		this.y = d3.scaleLinear()
+			.domain([0, config.rows])
+			.range([this.margin.top, this.size.height - this.margin.bottom]);
+
+		this.r = d3.scaleLinear()
+			.domain([config.minLoad, config.maxLoad])
+			.range([config.minRadius, config.maxRadius]);
 	}
 
 	/**
-	 * init with configurations
+	 * init with static constructor, enabling a chain-style call
 	 * @param container
-	 * @param margin
+	 * @param config
 	 * @returns {CalendarPlot}
 	 */
-	static of({container, margin}) {
-		return new CalendarPlot({container, margin});
+	static of(container, config) {
+		return new CalendarPlot(container, config);
 	}
 
 	data(data) {
+		// filter null data
 		this.data = data.filter(d => d.load !== null);
 		return this;
 	}
@@ -38,8 +63,10 @@ export default class CalendarPlot {
 			.attr("height", this.size.height);
 
 		// month & day of week marks
-		const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-		const day_of_weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+		const months =
+			["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+		const day_of_weeks =
+			["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 		this.month_marks = this.svg.append("g")
 			.attr("fill", "white")
@@ -55,7 +82,7 @@ export default class CalendarPlot {
 			.selectAll("text")
 			.data(day_of_weeks).enter()
 			.append("text")
-			.attr("x", (d, i) => this.x(0))
+			.attr("x", this.x(0))
 			.attr("y", (d, i) => i >= 7 ? this.y(i + 2) : this.y(i + 1))
 			.text(d => d);
 
@@ -136,7 +163,9 @@ export default class CalendarPlot {
 	highlight(data) {
 		this.calendar.attr("opacity", original_data => {
 			for (let highlight_data of data) {
-				if (original_data.month === highlight_data.month && original_data.week === highlight_data.week && original_data.day_of_week === highlight_data.day_of_week) {
+				if (original_data.month === highlight_data.month &&
+					original_data.week === highlight_data.week &&
+					original_data.day_of_week === highlight_data.day_of_week) {
 					return 1;
 				}
 			}
